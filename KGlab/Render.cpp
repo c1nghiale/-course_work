@@ -96,11 +96,6 @@ Texture skyboxTexture;
 // Выполняется один раз перед первым рендером
 void initRender()
 {
-    //phong_sh.VshaderFileName = "shaders/v.vert";
-    //phong_sh.FshaderFileName = "shaders/ship.frag";
-    //phong_sh.LoadShaderFromFile();
-    //phong_sh.Compile();
-
     skyboxTexture.LoadTexture("C:\\Users\\pedro\\KGlabs\\LAB4\\KGlab\\textures\\SkyBox.png");
     skybox.setTextureId(skyboxTexture.getTexId());
 
@@ -182,9 +177,6 @@ void Render(double delta_time)
     glGetFloatv(GL_MODELVIEW_MATRIX, view_matrix);
 
     light.SetUpLight();
-
-    // Рисуем оси
-    //gl.DrawAxes();
 
     glBindTexture(GL_TEXTURE_2D, 0);
 

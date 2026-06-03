@@ -97,7 +97,7 @@ SolarSystem::SolarSystem()
 {
     double M = 10000.0;
 
-    // Солнце в центре
+    // Солнце
     bodies.push_back(Celestial({ 0, 0, 0, 0, 0, 0, M, 2.0, 1.0, 0.7, 0.0 }));
 
     bodies.push_back(Celestial({ 8, 0, 0, 0, sqrt(G * M / 8), 0, 0.1, 0.4, 0.7, 0.7, 0.7 }));   // Меркурий
@@ -137,24 +137,21 @@ void SolarSystem::draw()
     glPushAttrib(GL_ALL_ATTRIB_BITS);
     glDisable(GL_TEXTURE_2D);
 
-    // Орбиты — всегда без освещения
+    
     glDisable(GL_LIGHTING);
     for (auto& body : bodies) {
         drawOrbits(body);
     }
 
     if (sunEmission) {
-        // Включено — свет и материалы
         glEnable(GL_LIGHTING);
 
-        // Солнце светится
         float sunEmis[] = { 1.0f, 0.7f, 0.0f, 1.0f };
         float sunDif[] = { 1.0f, 0.7f, 0.0f, 1.0f };
         glMaterialfv(GL_FRONT, GL_EMISSION, sunEmis);
         glMaterialfv(GL_FRONT, GL_DIFFUSE, sunDif);
         bodies[0].drawCelestial();
 
-        // Планеты — освещённые
         for (size_t i = 1; i < bodies.size(); i++) {
             float dif[] = { static_cast<float>(bodies[i].r),
                            static_cast<float>(bodies[i].g),
@@ -166,7 +163,6 @@ void SolarSystem::draw()
         }
     }
     else {
-        // Выключено — просто цвета
         glDisable(GL_LIGHTING);
 
         glColor3d(1.0, 0.7, 0.0);
