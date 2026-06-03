@@ -52,10 +52,10 @@ void Camera::processKeyboard(double deltaTime)
         position = position + front * v;
     if (OpenGL::isKeyPressed('S'))
         position = position - front * v;
-    if (OpenGL::isKeyPressed('D'))
-        yaw -= v * 1.5;  // Рысканье влево
-    if (OpenGL::isKeyPressed('A'))
-        yaw += v * 1.5;  // Рысканье вправо
+    if (OpenGL::isKeyPressed('D'))  yaw -= v * 1.5;  // Рысканье влево
+      
+    if (OpenGL::isKeyPressed('A')) yaw += v * 1.5;  // Рысканье вправо
+        
     if (OpenGL::isKeyPressed('Q'))
         roll += v * 1.5;
     if (OpenGL::isKeyPressed('E'))
