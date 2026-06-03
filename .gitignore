@@ -1,0 +1,11 @@
+﻿*.exe
+*.obj
+x64/
+Debug/
+Release/
+*.sdf
+*.suo
+*.user
+*.vcxproj.user
+.vs/
+*.log
